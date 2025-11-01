@@ -22,8 +22,11 @@ if (Test-Path $npmPath) {
     }
 }
 
-# Set API key from environment
-$env:GEMINI_API_KEY = "AIzaSyBJ0MT3q-ro7JaXcWsll3C8SF0mbwSIois"
+# Set API key from environment (must be set externally)
+if (-not $env:GEMINI_API_KEY) {
+    Write-Error "GEMINI_API_KEY environment variable not set. Please set it before running the CLI."
+    exit 1
+}
 
 # Launch the CLI
 & "$ScriptDir\GeminiCLI.ps1"
