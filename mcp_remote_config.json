@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "memory": {
+      "type": "http",
+      "url": "https://your-memory-server.example.com/mcp",
+      "apiKey": "your-api-key-here"
+    },
+    "filesystem": {
+      "type": "http", 
+      "url": "https://your-filesystem-server.example.com/mcp",
+      "apiKey": "your-api-key-here"
+    }
+  },
+  "note": "You can deploy your own MCP servers to: Google Cloud Run, AWS Lambda, Azure Functions, Cloudflare Workers, or use hosted services"
+}
