@@ -212,7 +212,12 @@ async function fetchUrlContent(url: string): Promise<ToolResult> {
     
     // Basic HTML stripping
     content = content.replace(/<script[^>]*>.*?<\/script>/gs, '');
-    content = content.replace(/<style[^>]*>.*?<\/style>/gs, '');
+    // Remove all <style> tags and their contents, including repeated/overlapping cases.
+    let prevContent;
+    do {
+      prevContent = content;
+      content = content.replace(/<style[^>]*>.*?<\/style>/gs, '');
+    } while (content !== prevContent);
     content = content.replace(/<[^>]+>/g, ' ');
     content = content.replace(/\s+/g, ' ').trim();
     
